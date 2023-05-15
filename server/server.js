@@ -34,6 +34,21 @@ let jokes = [
   }
 ];
 
+app.post('/addjoke', function ( req, res) {
+  console.log(req.body, 'was sent to server');
+  jokes.push(req.body)
+
+  // created
+ res.sendStatus(201)
+})
+
+
+app.get('/addjoke', function ( req, res) {
+  console.log('Request for /addjoke');
+  res.send(jokes)
+})
+
+
 // serve back static files
 app.use(express.static('server/public'));
 
